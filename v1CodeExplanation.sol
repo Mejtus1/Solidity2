@@ -177,3 +177,71 @@ _mint(to, amount);:
 
 //================================================================================================================================
 //================================================================================================================================
+// PART 3 of main code 
+
+function _update(address from, address to, uint256 value)
+    internal
+    override(ERC20, ERC20Pausable, ERC20Votes)
+{
+    super._update(from, to, value);
+}
+
+function nonces(address owner)
+    public
+    view
+    override(ERC20Permit, Nonces)
+    returns (uint256)
+{
+    return super.nonces(owner);
+}
+
+
+//======
+function _update(address from, address to, uint256 value)
+    internal
+    override(ERC20, ERC20Pausable, ERC20Votes)
+{
+    super._update(from, to, value);
+}
+
+/*
+_update: 
+- internal function named (_update)
+- used to override a function from the ERC-20 standard and other related extensions
+internal: 
+- internal function which means it can be accessed only within the contract or derived contracts
+- not called by external actors 
+override(ERC20, ERC20Pausable, ERC20Votes): 
+- indicates _update function overrides functions inherited from multiple contracts (ERC20, ERC20Pausable, and ERC20Votes)
+super._update(from, to, value);: 
+- calls the overridden _update function from the base contracts (ERC20, ERC20Pausable, and ERC20Votes) 
+- update token balances when transfers occur.
+- overriding it, you can customize the behavior of updating balances in your specific token contract
+*/
+
+========
+function nonces(address owner)
+    public
+    view
+    override(ERC20Permit, Nonces)
+    returns (uint256)
+{
+    return super.nonces(owner);
+}
+
+/*
+nonces: 
+- public function named "nonces.
+- used to retrieve the nonce for a specific address in the context of ERC-20 permit functionality
+public: 
+- makes function accessible from outside the contract      
+view: 
+- indicates that this function is read-only and doesn't modify the state of the blockchain
+override(ERC20Permit, Nonces): 
+- specifies that the nonces function is overriding a function inherited from two contracts: ERC20Permit and Nonces 
+returns (uint256): 
+- returns a uint256 value, which is the nonce for the given address
+return super.nonces(owner);: 
+- calls the overridden nonces function from the base contracts (ERC20Permit and Nonces) 
+- The purpose is to retrieve the nonce for the specified address, which is a critical part of the ERC-20 permit functionality
+*/
